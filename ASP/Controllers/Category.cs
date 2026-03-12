@@ -1,83 +1,43 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ASP.Controllers
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace LeCongHau_2123110447.Controllers
 {
-    public class Category : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CategoryController : ControllerBase
     {
-        // GET: Category
-        public ActionResult Index()
+        // GET: api/<CategoryController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            return View();
+            return new string[] { "value1", "value2" };
         }
 
-        // GET: Category/Details/5
-        public ActionResult Details(int id)
+        // GET api/<CategoryController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return View();
+            return "value";
         }
 
-        // GET: Category/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Category/Create
+        // POST api/<CategoryController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public void Post([FromBody] string value)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
-        // GET: Category/Edit/5
-        public ActionResult Edit(int id)
+        // PUT api/<CategoryController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return View();
         }
 
-        // POST: Category/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // DELETE api/<CategoryController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Category/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Category/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
